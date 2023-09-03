@@ -1,0 +1,1 @@
+import{D as o}from"./DefaultLayout-23b12a26.js";import{o as t,c as r}from"./index-d9a940a7.js";import"./ssrBoot-ce145360.js";import"./tag-e68e514b.js";const u={__name:"HomeLayout",setup(a){return(e,c)=>(t(),r(o))}};export{u as default};
