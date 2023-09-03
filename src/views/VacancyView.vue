@@ -70,7 +70,7 @@ const copyText = () => {
     <v-container class="py-5">
         <v-row class="justify-center">
             <v-col cols="12" lg="10" sm="12" class="d-flex">
-                <v-btn icon="mdi-arrow-left" size="x-small" to="/jobs" />
+                <v-btn icon="mdi-arrow-left" size="x-small" :to="{ name: 'Jobs' }" />
                 <v-btn
                     class="ml-auto"
                     icon

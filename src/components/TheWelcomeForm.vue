@@ -6,7 +6,7 @@ const router = useRouter();
 const expand = ref(false);
 
 const fetchVacancies = () => {
-    router.push("/jobs");
+    router.push({ name: "Jobs" });
     console.log("fetch vacancies");
 };
 
