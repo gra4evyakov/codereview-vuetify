@@ -1,0 +1,4 @@
+:root {
+    --blue-gradient: linear-gradient(33deg, rgba(0,87,255,1) 0%,rgba(0,228,201,1) 91%);
+    --purple-gradient: linear-gradient(0.092turn,rgba(32,147,254,1) 0%,rgba(194,23,254,1) 90%);
+}

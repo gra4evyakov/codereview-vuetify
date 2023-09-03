@@ -1,0 +1,123 @@
+<template>
+  <v-row>
+    <v-virtual-scroll
+      :items="items"
+      class="h-screen"
+    >
+      <template v-slot:default="{ item }">
+        <v-col cols="12" sm="12">
+          <router-link :to="{ name: 'Vacancy', params: { id: item.id } }">
+            <ui-card :item="item" />
+          </router-link>
+        </v-col>
+      </template>
+    </v-virtual-scroll>
+  </v-row>
+</template>
+
+<script setup>
+import UiCard from '@/components/ui/uiCard.vue';
+
+const items = [
+  {
+    id: 0,
+    vacancy_name: "Python Developer",
+    salary: "80000-100000",
+    location: "Moscow, Russia",
+    remote: false,
+    company_name: "TechCo",
+    specialty: "Python",
+  },
+  {
+    id: 1,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 2,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 3,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 4,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 5,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 6,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 7,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 8,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 9,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+  {
+    id: 10,
+    vacancy_name: "Java Software Engineer",
+    salary: "90000-110000",
+    location: "Berlin, Germany",
+    remote: true,
+    company_name: "CodeTech",
+    specialty: "Java",
+  },
+];
+
+</script>

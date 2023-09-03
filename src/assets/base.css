@@ -1,0 +1,10 @@
+@import './variables.css';
+
+#app {
+    font-family: 'Wix Madefor Text', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
