@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import SvgLogo from "./icons/svgLogo.vue";
 
 const router = useRouter();
 const expand = ref(false);
@@ -18,15 +19,7 @@ onMounted(() => {
 <template>
     <v-row class="h-screen justify-center align-center">
         <v-col cols="12" md="6" class="text-center">
-            <v-scroll-x-transition>
-                <h1
-                    v-show="expand"
-                    height="100"
-                    class="mx-auto bg-transparent text-h4 mb-6"
-                >
-                    &#60; codereview jobs &#47;&#62;
-                </h1>
-            </v-scroll-x-transition>
+                <svg-logo class="mx-auto mb-6"/>
             <v-form @submit.prevent="fetchVacancies">
                 <v-scroll-x-reverse-transition>
                     <v-text-field
@@ -45,7 +38,7 @@ onMounted(() => {
                         type="submit"
                         v-show="expand"
                     >
-                        К вакансиям
+                        Найти
                     </v-btn>
                 </v-scroll-x-transition>
             </v-form>

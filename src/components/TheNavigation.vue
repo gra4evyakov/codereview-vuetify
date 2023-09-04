@@ -1,23 +1,7 @@
 <template>
     <div>
       <template v-if="!auth.isLoggedIn.value">
-        <v-list v-for="groupItem in list" :key="groupItem.group">
-          <v-list-subheader class="justify-center font-weight-bold">
-            {{ groupItem.group }}
-          </v-list-subheader>
-          <v-btn
-            v-for="item in groupItem.list"
-            :key="item.text"
-            class="w-100"
-            size="large"
-            variant="text"
-            :prepend-icon="item.icon"
-            @click="handleItemClick(item)"
-          >
-            {{ item.text }}
-            <ui-popup v-if="item.type !== 'google'" :type="item.type" />
-          </v-btn>
-        </v-list>
+        <div id="header-links" class="d-flex align-end flex-column"/>
       </template>
       <template v-else>
         <v-row class="flex-column align-center" no-gutters>

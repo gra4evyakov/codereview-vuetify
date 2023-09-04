@@ -76,7 +76,7 @@ const queries = reactive({
 </script>
 
 <template>
-    <v-expansion-panels>
+    <v-expansion-panels variant="accordion" class="sticky-expansion-panels">
         <v-expansion-panel
             v-for="group in groups"
             :key="group.title"
@@ -108,3 +108,10 @@ const queries = reactive({
         </v-expansion-panel>
     </v-expansion-panels>
 </template>
+
+<style scoped>
+.sticky-expansion-panels {
+  position: sticky;
+  top: 96px;
+}
+</style>

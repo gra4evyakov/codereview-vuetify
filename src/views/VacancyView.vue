@@ -70,7 +70,7 @@ const copyText = () => {
     <v-container class="py-5">
         <v-row class="justify-center">
             <v-col cols="12" lg="10" sm="12" class="d-flex">
-                <v-btn icon="mdi-arrow-left" size="x-small" :to="{ name: 'Jobs' }" />
+                <v-btn icon="mdi-arrow-left" size="x-small" @click="$router.back()" />
                 <v-btn
                     class="ml-auto"
                     icon
@@ -128,19 +128,18 @@ const copyText = () => {
                 <v-card>
                     <v-card-actions>
                         <v-btn
-                            class="card-btn w-100"
-                            :href="
-                                auth.isLoggedIn.value ? currentVacancy.url : ''
-                            "
-                        >
+                            v-if="auth.isLoggedIn.value"
+                            block
+                            class="card-btn"
+                            :href="currentVacancy.url">
                             Отклик
-
-                            <ui-snackbar
-                                v-if="!auth.isLoggedIn.value"
-                                activator="parent"
-                                :is-open="!!auth.errorMsg.value"
-                                message="Требуется авторизация"
-                            />
+                        </v-btn>
+                        <v-btn
+                            v-else
+                            block
+                            class="card-btn"
+                            :to="{ name: 'Login' }">
+                            Отклик
                         </v-btn>
                     </v-card-actions>
                 </v-card>
