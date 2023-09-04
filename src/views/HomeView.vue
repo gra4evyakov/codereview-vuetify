@@ -4,7 +4,7 @@ import TheWelcomeForm from '@/components/TheWelcomeForm.vue';
 
 <template>
     <div class="home text-white">
-        <v-container>
+        <v-container class="py-0">
             <the-welcome-form />
         </v-container>
     </div>
@@ -12,7 +12,7 @@ import TheWelcomeForm from '@/components/TheWelcomeForm.vue';
 <style scoped>
 .home {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: linear-gradient(
         0.092turn,
         rgba(32, 147, 254, 1) 0%,
