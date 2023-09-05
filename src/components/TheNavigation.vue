@@ -1,7 +1,7 @@
 <template>
     <div>
       <template v-if="!auth.isLoggedIn.value">
-        <div id="header-links" class="d-flex align-end flex-column"/>
+        <div id="header-links" class="d-flex align-start flex-column"/>
       </template>
       <template v-else>
         <v-row class="flex-column align-center" no-gutters>
@@ -19,8 +19,8 @@
           </v-col>
         </v-row>
         <v-btn
+          block
           color="primary"
-          class="w-100"
           size="large"
           variant="text"
           prepend-icon="mdi-logout"
@@ -33,18 +33,10 @@
   </template>
 
 <script setup>
-import uiPopup from "./ui/uiPopup.vue";
 import { useFirebase } from "@/hooks/useFirebase";
 
 defineProps({
     list: Array,
 });
-
 const auth = useFirebase();
-
-const handleItemClick = (item) => {
-  if (item.type === 'google') {
-    auth.loginWithGoogle();
-  }
-};
 </script>

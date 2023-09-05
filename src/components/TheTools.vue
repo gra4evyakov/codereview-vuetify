@@ -1,26 +1,11 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
 
+import svgTelegram from "@/components/icons/svgTelegram.vue";
+
+const route = useRoute();
 const groups = [
-    {
-        title: "Ваш опыт",
-        list: [
-            {
-                title: "Нет опыта",
-                type: "no-experience",
-            },
-            {
-                title: "От 1 года",
-                type: "one-year",
-            },
-            {
-                title: "От 3 лет",
-                type: "three-years",
-            },
-        ],
-        type: "checkbox",
-        queriesName: "experience",
-    },
     {
         title: "Зарплата",
         list: [
@@ -67,16 +52,80 @@ const groups = [
         type: "checkbox",
         queriesName: "format",
     },
+    {
+        title: "Специализация",
+        list: [
+            {
+                title: "Python",
+                type: "python",
+            },
+            {
+                title: "Java",
+                type: "java",
+            },
+            {
+                title: "C++",
+                type: "cpp",
+            },
+            {
+                title: "C#",
+                type: "c#",
+            },
+            {
+                title: "JavaScript",
+                type: "javascript",
+            },
+            {
+                title: "PHP",
+                type: "php",
+            },
+            {
+                title: "Go",
+                type: "go",
+            },
+            {
+                title: "Swift",
+                type: "swift",
+            },
+            {
+                title: "C",
+                type: "c",
+            }
+        ],
+        type: "radio",
+        queriesName: "stack",
+    },
 ];
 const queries = reactive({
-    experience: [],
     salary: "",
     format: [],
+    stack : ""
+});
+
+watch(
+    () => route.query,
+    async () => {
+        Object.keys(queries).forEach((key) => {
+            queries[key] = route.query[key]
+        })
+    }
+), { deep: true };
+
+onMounted(async () => {
+    Object.keys(queries).forEach((key) => {
+        queries[key] = route.query[key]
+    })
 });
 </script>
 
 <template>
     <v-expansion-panels variant="accordion" class="sticky-expansion-panels">
+        <v-btn block class="mb-4">
+            Вакансии в
+            <template #append>
+                <svg-telegram />
+            </template>
+        </v-btn>
         <v-expansion-panel
             v-for="group in groups"
             :key="group.title"
@@ -111,7 +160,17 @@ const queries = reactive({
 
 <style scoped>
 .sticky-expansion-panels {
-  position: sticky;
-  top: 96px;
+    max-width: 600px;
+    margin: 0 auto;
+    position: sticky;
+    top: 86px;
+}
+
+@media screen and (min-width: 960px) {
+    .sticky-expansion-panels {
+        max-width: 265px;
+        margin: 0;
+        margin-left: auto;
+    }
 }
 </style>

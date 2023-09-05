@@ -1,11 +1,7 @@
 <template>
-    <v-row v-for="item in items" :key="item.id">
-        <v-col cols="12" sm="12">
-            <router-link :to="{ name: 'Vacancy', params: { id: item.id } }">
-                <ui-card :item="item" />
-            </router-link>
-        </v-col>
-    </v-row>
+    <router-link class="mb-4" v-for="item in items" :key="item.id" :to="{ name: 'Vacancy', params: { id: item.id } }">
+        <ui-card :item="item"/>
+    </router-link>
 </template>
 
 <script setup>
