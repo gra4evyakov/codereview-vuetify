@@ -2,7 +2,7 @@
     <v-card
         class="card pa-4 text-white"
         height="150"
-        :image="`/images/${props.item.color}.webp`"
+        :image="`./images/${props.item.color}.webp`"
         rounded="lg"
     >
       <v-card-title class="font-weight-bold text-h5">

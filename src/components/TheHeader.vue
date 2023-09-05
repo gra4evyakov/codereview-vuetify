@@ -49,7 +49,7 @@ const handlerNav = () => {
     <v-app-bar class="text-white" :elevation="8" height="70">
         <template v-slot:image>
             <v-img
-                gradient="to top right, rgba(32,147,254,1), rgba(194,23,254,1)"
+                gradient="to top right, rgba(32 147 254 / 80%), rgba(194 23 254 / 80%) 90%"
             ></v-img>
         </template>
         <div class="container">
