@@ -45,7 +45,7 @@ defineProps({
     padding: 0.5rem 1rem;
 }
 
-.chip:last-child {
+.card-md .chip:last-child {
     margin-left: auto;
 }
 

@@ -10,6 +10,7 @@ const route = useRoute();
 const auth = useFirebase();
 
 const vacancyId = ref("");
+const snackbar = ref(false);
 
 const currentVacancy = {
     id: 0,
@@ -83,6 +84,7 @@ const copyText = () => {
                     >
                         <v-icon>mdi-export-variant</v-icon>
                         <ui-snackbar
+                            v-model="snackbar"
                             activator="parent"
                             :color="
                                 auth.isLoggedIn.value ? 'green' : 'red-darken-1'

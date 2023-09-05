@@ -24,17 +24,16 @@ const authenticate = async (email, password) => {
     } else if (type.value === "login") {
         await auth.loginUser(email, password);
     }
-    auth.isLoggedIn.value ? router.push("/jobs") : (snackbar.value = true);
+    auth.isLoggedIn.value ? router.back() : (snackbar.value = true);
 };
 
 const googleAuth = async () => {
     await auth.loginWithGoogle();
-    auth.isLoggedIn.value ? router.push("/jobs") : (snackbar.value = true);
+    auth.isLoggedIn.value ? router.back() : (snackbar.value = true);
 };
 
 onMounted(() => {
     auth.logoutUser();
-    console.log(auth.isLoggedIn.value);
     type.value = route.query.type;
     expand.value = true;
 });

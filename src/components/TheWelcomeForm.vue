@@ -99,7 +99,6 @@ onMounted(() => {
 
 <style scoped>
 .welcome {
-    height: 100vh;
     display: grid;
     grid-template-rows: 400px 1fr;
 }

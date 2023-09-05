@@ -54,14 +54,26 @@ const handlerNav = () => {
         </template>
         <div class="container">
             <v-row>
-                <v-col cols="11" sm="10" md="4" lg="3" class="d-flex justify-start align-center">
+                <v-col
+                    cols="11"
+                    sm="10"
+                    md="4"
+                    lg="3"
+                    class="d-flex justify-start align-center"
+                >
                     <v-app-bar-title>
                         <router-link to="/" class="d-flex">
                             <svg-logo />
                         </router-link>
                     </v-app-bar-title>
                 </v-col>
-                <v-col cols="1" sm="2" md="8" lg="9" class="d-flex justify-end align-center">
+                <v-col
+                    cols="1"
+                    sm="2"
+                    md="8"
+                    lg="9"
+                    class="d-flex justify-end align-center"
+                >
                     <v-btn
                         v-if="!drawer"
                         class="d-md-none"
@@ -84,8 +96,8 @@ const handlerNav = () => {
                             {{ link.title }}
                         </v-btn>
                         <v-btn
-                            class="px-1"
                             v-if="!auth.isLoggedIn.value"
+                            class="px-1"
                             :to="{
                                 path: '/login',
                                 query: { type: 'register' },
@@ -95,7 +107,13 @@ const handlerNav = () => {
                         >
                             Регистрация
                         </v-btn>
-                        <v-btn v-else class="px-1" @click="auth.logoutUser()">
+                        <v-btn 
+                            v-else
+                            class="px-1"
+                            size="large"
+                            @click="auth.logoutUser()"
+                            block
+                        >
                             Выйти
                         </v-btn>
                     </Teleport>
@@ -120,8 +138,8 @@ const handlerNav = () => {
                             Регистрация
                         </v-btn>
                         <v-btn
+                            class="px-md-1 px-lg-4"
                             v-else
-                            size="large"
                             variant="elevated"
                             @click="auth.logoutUser()"
                         >

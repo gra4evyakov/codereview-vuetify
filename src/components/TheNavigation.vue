@@ -21,7 +21,6 @@
         <v-btn
           block
           color="primary"
-          size="large"
           variant="text"
           prepend-icon="mdi-logout"
           @click="auth.logoutUser"
