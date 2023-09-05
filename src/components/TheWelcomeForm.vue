@@ -69,8 +69,8 @@ onMounted(() => {
 
 <template>
     <div class="welcome">
-        <header class="background pa-8">
-            <div class="container">
+        <header class="background pt-1 pb-6">
+            <div class="container pa-4">
                 <svg-logo />
                 <h1
                     class="text-sm-h2 text-center mt-auto mb-2 font-weight-bold"
