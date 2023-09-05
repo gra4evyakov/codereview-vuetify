@@ -67,85 +67,91 @@ const copyText = () => {
 </script>
 
 <template>
-    <v-container class="py-5">
-        <v-row class="justify-center">
-            <v-col cols="12" lg="10" sm="12" class="d-flex">
-                <v-btn icon="mdi-arrow-left" size="x-small" @click="$router.back()" />
-                <v-btn
-                    class="ml-auto"
-                    icon
-                    size="x-small"
-                    @click="auth.isLoggedIn.value ? copyText() : null"
-                >
-                    <v-icon>mdi-export-variant</v-icon>
-                    <ui-snackbar
-                        activator="parent"
-                        :color="
-                            auth.isLoggedIn.value ? 'green' : 'red-darken-1'
-                        "
-                        :message="
-                            auth.isLoggedIn.value
-                                ? 'Ссылка на вакансию скопирована'
-                                : 'Необходимо авторизоваться'
-                        "
+    <div class="container">
+            <v-row class="justify-center">
+                <v-col cols="12" lg="10" sm="12" class="d-flex">
+                    <v-btn
+                        icon="mdi-arrow-left"
+                        size="x-small"
+                        @click="$router.back()"
                     />
-                </v-btn>
-            </v-col>
-        </v-row>
-        <v-row class="justify-center">
-            <v-col cols="12" lg="10" sm="12">
-                <ui-card :item="currentVacancy" size="lg" />
-            </v-col>
-        </v-row>
-        <v-row class="justify-center">
-            <v-col cols="12" lg="8" sm="9" class="d-flex flex-column">
-                <v-card>
-                    <v-card-title class="font-weight-bold">
-                        {{ currentVacancy.salary }}р
-                    </v-card-title>
-                </v-card>
-                <v-card class="mt-2">
-                    <v-list
-                        v-for="item in currentVacancy.description"
-                        :key="item.title"
+                    <v-btn
+                        class="ml-auto"
+                        icon
+                        size="x-small"
+                        @click="auth.isLoggedIn.value ? copyText() : null"
                     >
-                        <v-list-item>
-                            <v-list-item-title class="font-weight-bold">{{
-                                item.title
-                            }}</v-list-item-title>
-                            <v-card-text
-                                v-for="item in item.list"
-                                :key="item"
-                                class="py-2"
+                        <v-icon>mdi-export-variant</v-icon>
+                        <ui-snackbar
+                            activator="parent"
+                            :color="
+                                auth.isLoggedIn.value ? 'green' : 'red-darken-1'
+                            "
+                            :message="
+                                auth.isLoggedIn.value
+                                    ? 'Ссылка на вакансию скопирована'
+                                    : 'Необходимо авторизоваться'
+                            "
+                        />
+                    </v-btn>
+                </v-col>
+            </v-row>
+            <v-row class="justify-center">
+                <v-col cols="12" lg="10" sm="12">
+                    <ui-card :item="currentVacancy" size="lg" />
+                </v-col>
+            </v-row>
+            <v-row class="justify-center">
+                <v-col cols="12" lg="8" sm="9" class="d-flex flex-column">
+                    <v-card>
+                        <v-card-title class="font-weight-bold">
+                            {{ currentVacancy.salary }}р
+                        </v-card-title>
+                    </v-card>
+                    <v-card class="mt-2">
+                        <v-list
+                            v-for="item in currentVacancy.description"
+                            :key="item.title"
+                        >
+                            <v-list-item>
+                                <v-list-item-title class="font-weight-bold">{{
+                                    item.title
+                                }}</v-list-item-title>
+                                <v-card-text
+                                    v-for="item in item.list"
+                                    :key="item"
+                                    class="py-2"
+                                >
+                                    - {{ item }}
+                                </v-card-text>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                </v-col>
+                <v-col cols="12" lg="2" sm="3">
+                    <v-card>
+                        <v-card-actions>
+                            <v-btn
+                                v-if="auth.isLoggedIn.value"
+                                block
+                                class="card-btn"
+                                :href="currentVacancy.url"
                             >
-                                - {{ item }}
-                            </v-card-text>
-                        </v-list-item>
-                    </v-list>
-                </v-card>
-            </v-col>
-            <v-col cols="12" lg="2" sm="3">
-                <v-card>
-                    <v-card-actions>
-                        <v-btn
-                            v-if="auth.isLoggedIn.value"
-                            block
-                            class="card-btn"
-                            :href="currentVacancy.url">
-                            Отклик
-                        </v-btn>
-                        <v-btn
-                            v-else
-                            block
-                            class="card-btn"
-                            :to="{ name: 'Login' }">
-                            Отклик
-                        </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
+                                Отклик
+                            </v-btn>
+                            <v-btn
+                                v-else
+                                block
+                                class="card-btn"
+                                :to="{ name: 'Login' }"
+                            >
+                                Отклик
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-col>
+            </v-row>
+    </div>
 </template>
 
 <style scoped>

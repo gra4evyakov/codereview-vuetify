@@ -56,13 +56,12 @@ const links = [
 </script>
 
 <template>
-    <v-footer class="footer">
-        <v-container>
+    <v-footer class="footer px-0 py-6">
+        <div class="container">
             <v-row>
                 <v-col cols="12" md="4" sm="12" class="d-flex flex-column">
                     <v-btn
                         class="justify-start"
-                        size="small"
                         variant="text"
                         href="https://yourcodereview.com"
                         >&#60; codereview &#47;&#62;</v-btn
@@ -72,7 +71,6 @@ const links = [
                             v-for="contact in contacts"
                             :key="contact.name"
                             class="justify-start"
-                            size="x-small"
                             variant="text"
                             :href="contact.href"
                             block
@@ -81,7 +79,7 @@ const links = [
                     </div>
                 </v-col>
                 <v-spacer />
-                <v-col cols="12" md="6" sm="12">
+                <v-col cols="12" md="8" sm="12">
                     <v-row>
                         <v-col
                             class="py-1"
@@ -92,7 +90,6 @@ const links = [
                             :key="index"
                         >
                             <v-btn
-                                size="x-small"
                                 variant="text"
                                 :href="`https://yourcodereview.com/#${item.anchor}`"
                             >
@@ -108,7 +105,6 @@ const links = [
                             sm="6"
                         >
                             <v-btn
-                                size="x-small"
                                 variant="text"
                                 :href="link.href"
                                 >{{ link.name }}</v-btn
@@ -117,7 +113,7 @@ const links = [
                     </v-row>
                 </v-col>
             </v-row>
-        </v-container>
+        </div>
     </v-footer>
 </template>
 <style scoped>

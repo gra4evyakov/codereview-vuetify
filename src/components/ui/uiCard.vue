@@ -1,6 +1,6 @@
 <template>
 <v-hover v-slot="{ isHovering, props }">
-    <v-card class="card py-2" v-bind="props" :elevation="isHovering ? 10 : 1">
+    <v-card class="py-2 mx-auto" :class="`card-${size}`" v-bind="props" :elevation="isHovering ? 10 : 1">
         <v-card-subtitle>{{ item.company_name }}</v-card-subtitle>
         <v-card-title   
             :class="size === 'lg' ? 'font-weight-bold text-h5' : ''"
@@ -9,14 +9,14 @@
         <v-card-text v-if="size !== 'lg'" class="pb-0">{{
             item.specialty
         }}</v-card-text>
-        <v-chip-group class="custom-chip">
-            <v-chip v-if="item.remote">Удаленно</v-chip>
+        <v-chip-group class="custom-chips">
+            <v-chip class="chip" v-if="item.remote">Удаленно</v-chip>
 
-            <v-chip v-if="item.location">{{
+            <v-chip class="chip" v-if="item.location">{{
                 item.location
             }}</v-chip>
 
-            <v-chip v-if="item.salary && size !== 'lg'"
+            <v-chip class="chip" v-if="item.salary && size !== 'lg'"
                 >{{ item.salary }}р</v-chip
             >
         </v-chip-group>
@@ -35,7 +35,23 @@ defineProps({
 </script>
 
 <style scoped>
-.custom-chip {
+.card-md {
+    max-width: 600px;
+}
+.card-lg {
+    max-width: 100%;
+}
+.custom-chips {
     padding: 0.5rem 1rem;
+}
+
+.chip:last-child {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .chip:last-child {
+        margin-left: 0;
+    }
 }
 </style>
