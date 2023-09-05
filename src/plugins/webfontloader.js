@@ -9,7 +9,7 @@
 
   webFontLoader.load({
     google: {
-      families: ['Wix+Madefor+Text:wght@400;500;600;700&display=swap'],
+      families: ['Wix+Madefor+Text:wght@400;500;700&display=swap'],
     },
   })
 }

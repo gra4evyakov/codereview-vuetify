@@ -9,57 +9,40 @@ const cards = [
     {
         id: 1,
         name: "Python",
-        color: "blue",
-        type: "python"
+        type: "python",
+        color: "indigo-darken-1"
     },
     {
         id: 2,
         name: "Java",
-        color: "orange",
-        type: "java"
+        type: "java",
+        color: "orange-darken-1",
+        icon: "SvgJavaScript"
     },
     {
         id: 3,
-        name: "C++",
-        color: "green",
-        type: "cpp"
+        name: "JavaScript",
+        type: "javascript",
+        color: "yellow-darken-3"
     },
     {
         id: 4,
-        name: "C#",
-        color: "red",
-        type: "c#"
+        name: "Data Science",
+        type: "data-science",
+        color: "light-blue-accent-2"
     },
     {
         id: 5,
-        name: "JavaScript",
-        color: "purple",
-        type: "javascript"
+        name: "QA",
+        type: "qa",
+        color: "deep-purple-accent-3"
     },
     {
         id: 6,
-        name: "PHP",
-        color: "lime",
-        type: "php"
-    },
-    {
-        id: 7,
-        name: "Go",
-        color: "blue",
-        type: "go"
-    },
-    {
-        id: 8,
-        name: "C",
-        color: "orange",
-        type: "c"
-    },
-    {
-        id: 9,
-        name: "Swift",
-        color: "purple",
-        type: "swift"
-    },
+        name: "C#",
+        type: "c-sharp",
+        color: "green-darken-1"
+    }
 ];
 
 onMounted(() => {
@@ -68,21 +51,21 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="welcome">
-        <header class="background pt-1 pb-6">
+    <div class="welcome background">
+        <header class="pt-1 pb-4">
             <div class="container pa-4">
                 <svg-logo />
                 <h1
-                    class="text-sm-h2 text-center mt-auto mb-2 font-weight-bold"
+                    class="text-sm-h2 text-center mt-auto mb-6 font-weight-bold"
                 >
-                    Поиск любимой работы
+                    Junior вакансии и стажировки
                 </h1>
-                <h3 class="text-sm-h5 text-center">
-                    Лёгкий способ найти хорошую работу в России и за границей
-                </h3>
+                <p class="text-sm-h4 text-center">
+                    Всё, что нужно, чтобы найти первую работу разработчиком
+                </p>
             </div>
         </header>
-        <div class="container">
+        <div class="container pt-2 justify-start">
             <div class="grid-cards">
                 <v-fade-transition
                     v-for="item in cards"
@@ -100,7 +83,8 @@ onMounted(() => {
 <style scoped>
 .welcome {
     display: grid;
-    grid-template-rows: 400px 1fr;
+    min-height: 100vh;
+    grid-template-rows: minmax(200px, 300px) 1fr;
 }
 
 .container {
@@ -110,14 +94,19 @@ onMounted(() => {
 }
 .grid-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     grid-auto-flow: dense;
     gap: 12px;
 }
+
+@media screen and (max-width: 550px) {
+    .grid-cards {
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    }
+}
+
 .background {
     background-image: var(--purple-gradient);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
 }
 .fade-transition-enter-active {
     transition-delay: 0.5s;
