@@ -1,12 +1,24 @@
 @import "./variables.css";
 
+:root {
+  --font-family: 'Wix Madefor Text'
+}
+
 ::-webkit-scrollbar {
   width: 0;
 }
 
 #app {
-  font-family: "Wix Madefor Text", sans-serif;
   min-width: 300px;
+  color: white;
+}
+
+.v-application [class*='text-'] {
+  font-family: var(--font-family), sans-serif !important;
+}
+
+.v-application {
+  font-family: var(--font-family), sans-serif !important;
 }
 
 .container {
