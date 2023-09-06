@@ -64,33 +64,22 @@ const groups = [
                 type: "java",
             },
             {
-                title: "C++",
-                type: "cpp",
-            },
-            {
-                title: "C#",
-                type: "c#",
-            },
-            {
                 title: "JavaScript",
                 type: "javascript",
             },
             {
-                title: "PHP",
-                type: "php",
+                title: "Data Science",
+                type: "data_science",
             },
             {
-                title: "Go",
-                type: "go",
+                title: "QA",
+                type: "qa",
             },
             {
-                title: "Swift",
-                type: "swift",
+                title: "C#",
+                type: "c-sharp",
             },
-            {
-                title: "C",
-                type: "c",
-            }
+
         ],
         type: "radio",
         queriesName: "stack",
@@ -120,9 +109,9 @@ onMounted(async () => {
 
 <template>
     <v-expansion-panels variant="accordion" class="sticky-expansion-panels">
-        <v-btn block class="mb-4">
-            Вакансии в
-            <template #append>
+        <v-btn block class="mb-4 font-weight-bold" height="70">
+            <span>{{ $vuetify.display.md ? 'Вакансии' : 'Вакансии в Telegram' }}</span>
+            <template #prepend>
                 <svg-telegram />
             </template>
         </v-btn>

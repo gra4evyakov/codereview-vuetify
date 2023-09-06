@@ -104,13 +104,13 @@ const copyText = () => {
                 </v-col>
             </v-row>
             <v-row class="justify-center">
-                <v-col cols="12" lg="8" sm="9" class="d-flex flex-column">
-                    <v-card>
+                <v-col cols="12" lg="7" sm="8" class="d-flex flex-column">
+                    <v-card class="pa-2" rounded="xl">
                         <v-card-title class="font-weight-bold">
                             {{ currentVacancy.salary }}р
                         </v-card-title>
                     </v-card>
-                    <v-card class="mt-2">
+                    <v-card class="mt-2 pa-2" rounded="xl">
                         <v-list
                             v-for="item in currentVacancy.description"
                             :key="item.title"
@@ -130,26 +130,35 @@ const copyText = () => {
                         </v-list>
                     </v-card>
                 </v-col>
-                <v-col cols="12" lg="2" sm="3">
-                    <v-card>
-                        <v-card-actions>
-                            <v-btn
-                                v-if="auth.isLoggedIn.value"
-                                block
-                                class="card-btn"
-                                :href="currentVacancy.url"
-                            >
-                                Отклик
-                            </v-btn>
-                            <v-btn
-                                v-else
-                                block
-                                class="card-btn"
-                                :to="{ name: 'Login' }"
-                            >
-                                Отклик
-                            </v-btn>
-                        </v-card-actions>
+                <v-col cols="12" lg="3" sm="4">
+                    <v-card class="pa-4 d-flex flex-column" rounded="xl">
+                        <v-card-title class="pa-0 pb-1 font-weight-bold">Отклик</v-card-title>
+                        <v-btn
+                            block
+                            size="large"
+                            class="card-btn__purple mb-2"
+                            href="https://yourcodereview.com"
+                        >
+                            Турбо отклик
+                        </v-btn>
+                        <v-btn
+                            v-if="auth.isLoggedIn.value"
+                            block
+                            color="black"
+                            size="large"
+                            :href="currentVacancy.url"
+                        >
+                            Отклик
+                        </v-btn>
+                        <v-btn
+                            v-else
+                            block
+                            size="large"
+                            color="black"
+                            :to="{ name: 'Login' }"
+                        >
+                            Отклик
+                        </v-btn>
                     </v-card>
                 </v-col>
             </v-row>
@@ -157,13 +166,8 @@ const copyText = () => {
 </template>
 
 <style scoped>
-.card-btn {
-    padding: 0 30px;
+.card-btn__purple {
     color: white;
-    background-image: linear-gradient(
-        33deg,
-        rgba(0, 87, 255, 1) 0%,
-        rgba(0, 228, 201, 1) 91%
-    );
+    background-image: var(--purple-gradient);
 }
 </style>

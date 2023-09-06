@@ -3,6 +3,7 @@
         max-width="400"
         class="card pa-4 mx-auto"
         rounded="xl"
+        elevation="10"
     >
       <v-row>
         <v-col cols="8">
@@ -16,7 +17,7 @@
       </v-row>
       <v-row>
         <v-col cols="12" class="pt-0">
-          <span class="text-h3 font-weight-black" :class="`text-${item.color}`">{{ props.item.name }}</span>
+          <span class="text-h4 font-weight-black" :class="`text-${item.color}`">{{ props.item.name }}</span>
         </v-col>
       </v-row>
     </v-card>

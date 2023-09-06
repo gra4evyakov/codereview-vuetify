@@ -1,27 +1,46 @@
 <template>
-<v-hover v-slot="{ isHovering, props }">
-    <v-card class="py-2 mx-auto" :class="`card-${size}`" v-bind="props" :elevation="isHovering && size === 'md' ? 10 : 1">
-        <v-card-subtitle>{{ item.company_name }}</v-card-subtitle>
-        <v-card-title   
-            :class="size === 'lg' ? 'font-weight-bold text-h5' : ''"
-            >{{ item.vacancy_name }}</v-card-title
+    <v-hover v-slot="{ isHovering, props }">
+        <v-card
+            v-bind="props"
+            class="py-4 mx-auto"
+            :class="`card-${size}`"
+            :elevation="isHovering && size === 'md' ? 10 : 3"
+            rounded="xl"
         >
-        <v-card-text v-if="size !== 'lg'" class="pb-0">{{
-            item.specialty
-        }}</v-card-text>
-        <v-chip-group class="custom-chips">
-            <v-chip class="chip" v-if="item.remote">Удаленно</v-chip>
-
-            <v-chip class="chip" v-if="item.location">{{
-                item.location
-            }}</v-chip>
-
-            <v-chip class="chip" v-if="item.salary && size !== 'lg'"
-                >{{ item.salary }}р</v-chip
+            <v-card-subtitle class="font-weight-bold">{{
+                item.company_name
+            }}</v-card-subtitle>
+            <v-card-title
+                class="font-weight-bold"
+                :class="size === 'lg' ? 'text-h5' : ''"
+                >{{ item.vacancy_name }}</v-card-title
             >
-        </v-chip-group>
-    </v-card>
-</v-hover>
+            <v-card-text v-if="size !== 'lg'" class="pb-0">{{
+                item.specialty
+            }}</v-card-text>
+            <v-chip-group class="custom-chips">
+                <v-chip
+                    v-if="item.remote"
+                    class="chip"
+                    prepend-icon="mdi-wifi"
+                    label
+                    >Удаленно</v-chip
+                >
+
+                <v-chip
+                    v-if="item.location"
+                    class="chip"
+                    prepend-icon="mdi-map-marker"
+                    label
+                    >{{ item.location }}</v-chip
+                >
+
+                <v-chip v-if="item.salary && size !== 'lg'" class="chip" label
+                    >{{ item.salary }}р</v-chip
+                >
+            </v-chip-group>
+        </v-card>
+    </v-hover>
 </template>
 
 <script setup>
@@ -46,12 +65,18 @@ defineProps({
 }
 
 .card-md .chip:last-child {
-    margin-left: auto;
+    margin-left: 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 960px) and (max-width: 1280px) {
     .card-md .chip:last-child {
         margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .card-md .chip:last-child {
+        margin-left: auto;
     }
 }
 </style>

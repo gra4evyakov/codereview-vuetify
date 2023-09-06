@@ -56,16 +56,16 @@ onMounted(() => {
             <div class="container pa-4">
                 <svg-logo />
                 <h1
-                    class="text-sm-h2 text-center mt-auto mb-6 font-weight-bold"
+                    class="text-sm-h2 text-center mt-auto font-weight-bold"
                 >
                     Junior вакансии и стажировки
                 </h1>
-                <p class="text-sm-h4 text-center">
+                <p class="text-sm-h4 text-center mt-8">
                     Всё, что нужно, чтобы найти первую работу разработчиком
                 </p>
             </div>
         </header>
-        <div class="container pt-2 justify-start">
+        <div class="container pt-2 justify-center">
             <div class="grid-cards">
                 <v-fade-transition
                     v-for="item in cards"
@@ -84,7 +84,7 @@ onMounted(() => {
 .welcome {
     display: grid;
     min-height: 100vh;
-    grid-template-rows: minmax(200px, 300px) 1fr;
+    grid-template-rows: minmax(200px, 350px) 1fr;
 }
 
 .container {

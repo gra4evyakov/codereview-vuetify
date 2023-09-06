@@ -96,10 +96,10 @@ onMounted(() => {
                         }}
                     </v-btn>
                     <v-btn
-                        block
-                        class="mb-2"
-                        variant="tonal"
+                        class="google-btn mb-2"
                         @click="googleAuth"
+                        size="large"
+                        block
                     >
                         Войти через Google
                     </v-btn>
@@ -133,5 +133,10 @@ onMounted(() => {
 <style scoped>
 .background {
     background-image: var(--purple-gradient);
+}
+
+.google-btn {
+    background-image: var(--blue-gradient);
+    color: white;
 }
 </style>

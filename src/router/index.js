@@ -40,6 +40,9 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return from.name !== 'Vacancy' ? { top: 0 } : savedPosition
+  },
 })
 
 export default router

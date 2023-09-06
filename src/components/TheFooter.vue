@@ -59,7 +59,7 @@ const links = [
     <v-footer class="footer px-0 py-6">
         <div class="container">
             <v-row>
-                <v-col cols="12" md="4" sm="12" class="d-flex flex-column">
+                <v-col cols="12" md="4" sm="12" class="d-flex flex-column py-1">
                     <v-btn
                         class="justify-start"
                         variant="text"
