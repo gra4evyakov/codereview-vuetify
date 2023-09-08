@@ -19,7 +19,7 @@
                 <v-chip
                     v-if="item.employment"
                     class="chip text-grey-darken-2"
-                    prepend-icon="mdi-wifi"
+                    prepend-icon="mdi-briefcase"
                     label
                     >{{ item.employment }}</v-chip
                 >
