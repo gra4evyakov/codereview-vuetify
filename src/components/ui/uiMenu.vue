@@ -1,69 +1,51 @@
 <template>
     <div class="text-center">
-        <v-menu v-model="menu" :close-on-content-click="false" location="end">
+        <v-menu v-model="menu" :close-on-content-click="false" location="start" transition="slide-x-reverse-transition">
             <template v-slot:activator="{ props }">
                 <v-btn color="white" v-bind="props" icon="mdi-menu"></v-btn>
             </template>
-            <div class="px-2 py-2 bg-white rounded">
-                <template v-if="!auth.isLoggedIn.value">
-                    <v-btn
-                        v-for="item in list"
-                        :key="item.text"
-                        class="w-100 d-flex justify-start"
-                        size="large"
-                        variant="text"
-                        :prepend-icon="item.icon"
-                        @click="handleItemClick(item)"
-                    >
-                        {{ item.text }}
-                        <ui-popup
-                            v-if="item.type !== 'google'"
-                            :type="item.type"
-                        />
-                    </v-btn>
-                </template>
-                <template v-else>
-                    <v-row class="flex-column align-center" no-gutters>
-                        <v-col cols="12" class="text-center mb-2">
-                            <v-avatar
-                                v-if="auth.currentUser.value.photoURL"
-                                :image="auth.currentUser.value.photoURL"
-                                size="40"
-                            />
-                        </v-col>
-                        <v-col cols="12" class="d-flex justify-center mb-2">
-                            <span
-                                v-if="
-                                    auth.currentUser.value.displayName ??
-                                    auth.currentUser.value.email
-                                "
-                                class="text-h6"
-                                >{{
-                                    auth.currentUser.value.displayName ??
-                                    auth.currentUser.value.email
-                                }}</span
-                            >
-                        </v-col>
-                    </v-row>
-                    <v-btn
-                        color="primary"
-                        class="w-100"
-                        size="large"
-                        variant="text"
-                        prepend-icon="mdi-logout"
-                        @click="auth.logoutUser"
-                    >
-                        Выход
-                    </v-btn>
-                </template>
-            </div>
+            <v-card height="300" class="d-flex flex-column pa-4 bg-white" rounded="lg">
+                <v-btn
+                    height="60"
+                    class="px-4 mx-lg-2"
+                    color="lime"
+                    rounded="lg"
+                    variant="flat"
+                    href="https://yourcodereview.com/"
+                >
+                    <span class="text-wrap"> Карьерная поддержка </span>
+                </v-btn>
+                <v-btn
+                    v-if="!auth.isLoggedIn.value"
+                    height="50"
+                    class="px-4 mx-1 mx-lg-2"
+                    rounded="lg"
+                    variant="flat"
+                    :to="{
+                        path: '/login',
+                        query: { type: 'login' },
+                    }"
+                >
+                    Войти
+                </v-btn>
+                <v-btn
+                    v-else
+                    height="50"
+                    class="px-2 mx-1 mx-lg-2"
+                    rounded="lg"
+                    variant="flat"
+                    @click="auth.logoutUser()"
+                >
+                    Выйти
+                </v-btn>
+                <slot />
+            </v-card>
         </v-menu>
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import uiPopup from "./uiPopup.vue";
 import { useFirebase } from "@/hooks/useFirebase";
 
 defineProps({
@@ -71,11 +53,5 @@ defineProps({
 });
 
 const auth = useFirebase();
-
-const handleItemClick = (item) => {
-  if (item.type === 'google') {
-    auth.loginWithGoogle();
-  }
-};
 const menu = ref(false);
 </script>

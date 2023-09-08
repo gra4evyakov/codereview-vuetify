@@ -1,12 +1,11 @@
 <script setup>
-import { ref } from "vue";
 import { useFirebase } from "@/hooks/useFirebase";
 
 import svgLogo from "./icons/svgLogo.vue";
 import TheNavigation from "./TheNavigation.vue";
+import uiMenu from "./ui/uiMenu.vue";
 
 const auth = useFirebase();
-const drawer = ref(false);
 
 const links = [
     {
@@ -23,33 +22,19 @@ const links = [
     },
 ];
 
-const handlerNav = () => {
-    drawer.value = !drawer.value;
-};
 </script>
 
 <template>
-    <v-navigation-drawer
-        v-if="$vuetify.display.mdAndDown"
-        v-model="drawer"
-        location="right"
-        class="rounded"
-    >
-        <v-layout class="pb-1 pt-3 pr-3 justify-end">
-            <v-btn icon="mdi-close" @click="handlerNav" />
-        </v-layout>
-        <the-navigation :links="links" />
-    </v-navigation-drawer>
-    <v-app-bar class="text-white" :elevation="8" height="70">
+    <v-app-bar class="text-white" :elevation="3" height="80">
         <template v-slot:image>
             <v-img
-                gradient="to top right, rgba(32 147 254 / 80%), rgba(220 23 254 / 80%) 90%"
+                gradient="to top right, rgba(32 147 254 / 90%), rgba(230 23 254 / 90%) 90%"
             ></v-img>
         </template>
-        <div class="container">
-            <v-row>
+        <div class="container py-6">
+            <v-row justify="space-between">
                 <v-col
-                    cols="11"
+                    cols="6"
                     sm="4"
                     md="4"
                     lg="3"
@@ -62,8 +47,8 @@ const handlerNav = () => {
                     </v-app-bar-title>
                 </v-col>
                 <v-col
-                    cols="1"
-                    sm="8"
+                    cols="6"
+                    sm="7"
                     md="8"
                     lg="9"
                     class="d-flex justify-end align-center"
@@ -72,67 +57,45 @@ const handlerNav = () => {
                         v-if="$vuetify.display.lgAndUp"
                         :links="links"
                     />
-                    <Teleport v-if="$vuetify.display.mdAndDown" to="#navigation-button">
-                        <v-btn
-                            class="px-4 mx-1 mx-lg-2 mb-2"
-                            @click="auth.logoutUser()"
-                        >
-                            Карьерная поддержка
-                        </v-btn>
-                        <v-btn
-                            class="px-4 mx-1 mx-lg-2"
-                            v-if="!auth.isLoggedIn.value"
-                            :to="{
-                                path: '/login',
-                                query: { type: 'register' },
-                            }"
-                        >
-                            Регистрация
-                        </v-btn>
-                        <v-btn
-                            class="px-4 mx-1 mx-lg-2"
-                            v-else
-                            variant="elevated"
-                            @click="auth.logoutUser()"
-                        >
-                            Выйти
-                        </v-btn>
-                    </Teleport >
-                    <template v-if="$vuetify.display.mdAndUp">
-                        <v-btn
-                            color="lime"
-                            class="px-4 mx-1 mx-lg-2"
-                            variant="elevated"
-                            @click="auth.logoutUser()"
-                        >
-                            Карьерная поддержка
-                        </v-btn>
-                        <v-btn
-                            v-if="!auth.isLoggedIn.value"
-                            class="px-4 mx-1 mx-lg-2"
-                            variant="elevated"
-                            :to="{
-                                path: '/login',
-                                query: { type: 'register' },
-                            }"
-                        >
-                            Регистрация
-                        </v-btn>
-                        <v-btn
-                            class="px-2 mx-1 mx-lg-2"
-                            v-else
-                            variant="elevated"
-                            @click="auth.logoutUser()"
-                        >
-                            Выйти
-                        </v-btn>
-                    </template>
                     <v-btn
-                        class="d-lg-none"
-                        size="x-large"
-                        icon="mdi-menu"
-                        @click="handlerNav"
-                    />
+                        v-if="$vuetify.display.smAndUp"
+                        height="50"
+                        class="custom-btn mx-1 mx-lg-2"
+                        color="lime"
+                        variant="elevated"
+                        rounded="lg"
+                        href="https://yourcodereview.com/"
+                    >
+                        Карьерная поддержка
+                    </v-btn>
+                    <v-btn
+                        v-if="!auth.isLoggedIn.value"
+                        class="mx-1 mx-lg-2"
+                        width="120"
+                        height="50"
+                        variant="elevated"
+                        rounded="lg"
+                        :to="{
+                            path: '/login',
+                            query: { type: 'login' },
+                        }"
+                    >
+                        Войти
+                    </v-btn>
+                    <v-btn
+                        width="120"
+                        height="50"
+                        class="mx-1 mx-lg-2"
+                        v-else
+                        variant="elevated"
+                        rounded="lg"
+                        @click="auth.logoutUser()"
+                    >
+                        Выйти
+                    </v-btn>
+                    <ui-menu v-if="$vuetify.display.mdAndDown">
+                        <the-navigation :links="links" />
+                    </ui-menu>
                 </v-col>
             </v-row>
         </div>

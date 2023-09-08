@@ -5,7 +5,6 @@ const props = defineProps({
 </script>
 
 <template>
-    <div id="navigation-button" class="d-flex flex-column"></div>
     <v-btn
         class="px-1 mx-1 mx-lg-2"
         variant="text"

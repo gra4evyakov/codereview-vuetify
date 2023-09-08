@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, onMounted, watch } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import svgTelegram from "@/components/icons/svgTelegram.vue";
@@ -79,7 +79,6 @@ const groups = [
                 title: "C#",
                 type: "c-sharp",
             },
-
         ],
         type: "radio",
         queriesName: "stack",
@@ -87,30 +86,40 @@ const groups = [
 ];
 const queries = reactive({
     salary: "",
-    format: [],
-    stack : ""
+    stack: "",
 });
+const format = ref([]);
 
 watch(
     () => route.query,
     async () => {
         Object.keys(queries).forEach((key) => {
-            queries[key] = route.query[key]
-        })
+            queries[key] = route.query[key];
+        });
     }
-), { deep: true };
+),
+    { deep: true };
 
 onMounted(async () => {
     Object.keys(queries).forEach((key) => {
-        queries[key] = route.query[key]
-    })
+        queries[key] = route.query[key];
+    });
 });
 </script>
 
 <template>
     <v-expansion-panels variant="accordion" class="sticky-expansion-panels">
-        <v-btn block class="mb-4 font-weight-bold" height="70">
-            <span>{{ $vuetify.display.md ? 'Вакансии' : 'Вакансии в Telegram' }}</span>
+        <v-btn
+            block
+            class="px-6 py-4 font-weight-bold justify-start"
+            height="70"
+            rounded="xl"
+            size="small"
+            href="https://t.me/YCRJobs"
+        >
+            <span>{{
+                $vuetify.display.md ? "Вакансии" : "Вакансии в Telegram"
+            }}</span>
             <template #prepend>
                 <svg-telegram />
             </template>
@@ -119,12 +128,13 @@ onMounted(async () => {
             v-for="group in groups"
             :key="group.title"
             :title="group.title"
+            rounded="xl"
         >
             <v-expansion-panel-text>
                 <template v-if="group.type === 'checkbox'">
                     <v-checkbox
                         v-for="item in group.list"
-                        v-model="queries[group.queriesName]"
+                        v-model="format"
                         density="compact"
                         hide-details
                         :key="item.title"
@@ -152,12 +162,12 @@ onMounted(async () => {
     max-width: 600px;
     margin: 0 auto;
     position: sticky;
-    top: 86px;
+    top: 112px;
 }
 
 @media screen and (min-width: 960px) {
     .sticky-expansion-panels {
-        max-width: 265px;
+        max-width: 280px;
         margin: 0;
         margin-left: auto;
     }

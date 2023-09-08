@@ -1,20 +1,19 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useFirebase } from "@/hooks/useFirebase";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 import svgLogo from "@/components/icons/svgLogo.vue";
 import uiSnackbar from "@/components/ui/uiSnackbar.vue";
 
 const router = useRouter();
-const route = useRoute();
 
 const visible = ref(false);
 
 const auth = useFirebase();
 const email = ref("");
 const password = ref("");
-const type = ref("");
+const type = ref("login");
 const snackbar = ref(false);
 const expand = ref(false);
 
@@ -34,7 +33,6 @@ const googleAuth = async () => {
 
 onMounted(() => {
     auth.logoutUser();
-    type.value = route.query.type;
     expand.value = true;
 });
 </script>
@@ -109,7 +107,7 @@ onMounted(() => {
                             class="text-decoration-none"
                             variant="text"
                             size="small"
-                            @click="type === 'register '? type = 'register': type = 'login'"
+                            @click="type === 'login'? type = 'register': type = 'login'"
                         >
                             {{
                                 type !== "register"

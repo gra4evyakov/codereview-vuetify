@@ -15,13 +15,10 @@
                 :class="size === 'lg' ? 'text-h5' : ''"
                 >{{ item.vacancy_name }}</v-card-title
             >
-            <v-card-text v-if="size !== 'lg'" class="pb-0">{{
-                item.specialty
-            }}</v-card-text>
             <v-chip-group class="custom-chips">
                 <v-chip
                     v-if="item.remote"
-                    class="chip"
+                    class="chip text-grey-darken-2"
                     prepend-icon="mdi-wifi"
                     label
                     >Удаленно</v-chip
@@ -29,13 +26,16 @@
 
                 <v-chip
                     v-if="item.location"
-                    class="chip"
+                    class="chip text-grey-darken-2"
                     prepend-icon="mdi-map-marker"
                     label
                     >{{ item.location }}</v-chip
                 >
 
-                <v-chip v-if="item.salary && size !== 'lg'" class="chip" label
+                <v-chip
+                    v-if="item.salary && size !== 'lg'"
+                    class="chip text-grey-darken-2"
+                    label
                     >{{ item.salary }}р</v-chip
                 >
             </v-chip-group>
