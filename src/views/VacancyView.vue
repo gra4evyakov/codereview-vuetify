@@ -14,8 +14,8 @@ const snackbar = ref(false);
 const dialog = ref(false);
 
 const currentVacancy = {
-    id: 0,
-    vacancy_name: "Python Developer",
+    hh_id: "85740036",
+    name: "Junior PHP разработчик",
     title: "We are seeking a skilled Python Developer to join our dynamic team. If you have a passion for writing clean, maintainable code and a strong background in Python, we want to hear from you!",
     description: [
         {
@@ -36,11 +36,11 @@ const currentVacancy = {
             ],
         },
     ],
-    salary: "80000-100000",
-    location: "Moscow, Russia",
-    remote: false,
-    company_name: "TechCo",
-    specialty: "Python",
+    salary_from: 800,
+    salary_to: null,
+    salary_currency: "USD",
+    area: "Минск",
+    employer: "Спортдата",
     url: "https://example.com/job/python-developer",
 };
 
@@ -108,7 +108,7 @@ const copyText = () => {
             <v-col cols="12" lg="7" sm="8" class="d-flex flex-column">
                 <v-card class="pa-2" rounded="xl">
                     <v-card-title class="font-weight-bold">
-                        {{ currentVacancy.salary }}р
+                       от {{ currentVacancy.salary_from }} {{ currentVacancy.salary_to ? `- ${currentVacancy.salary_to}` : '' }} {{ currentVacancy.salary_currency }}
                     </v-card-title>
                 </v-card>
                 <v-hover v-slot="{ isHovering, props }">

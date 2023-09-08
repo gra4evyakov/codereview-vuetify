@@ -54,7 +54,9 @@ onMounted(() => {
     <div class="welcome background">
         <header class="pt-1 pb-4">
             <div class="container px-4 py-6">
-                <svg-logo />
+                <router-link :to="{ name: 'Home' }">
+                    <svg-logo />
+                </router-link>
                 <h1
                     class="text-sm-h2 text-center mt-auto font-weight-bold"
                 >

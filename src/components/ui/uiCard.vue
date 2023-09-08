@@ -8,35 +8,36 @@
             rounded="xl"
         >
             <v-card-subtitle class="font-weight-bold">{{
-                item.company_name
+                item.employer
             }}</v-card-subtitle>
             <v-card-title
                 class="font-weight-bold"
                 :class="size === 'lg' ? 'text-h5' : ''"
-                >{{ item.vacancy_name }}</v-card-title
+                >{{ item.name }}</v-card-title
             >
             <v-chip-group class="custom-chips">
                 <v-chip
-                    v-if="item.remote"
+                    v-if="item.employment"
                     class="chip text-grey-darken-2"
                     prepend-icon="mdi-wifi"
                     label
-                    >Удаленно</v-chip
+                    >{{ item.employment }}</v-chip
                 >
 
                 <v-chip
-                    v-if="item.location"
+                    v-if="item.area"
                     class="chip text-grey-darken-2"
                     prepend-icon="mdi-map-marker"
                     label
-                    >{{ item.location }}</v-chip
+                    >{{ item.area }}</v-chip
                 >
 
                 <v-chip
-                    v-if="item.salary && size !== 'lg'"
-                    class="chip text-grey-darken-2"
+                    v-if="item.salary_from && size !== 'lg'"
+                    class="chip chip-salary text-grey-darken-2"
                     label
-                    >{{ item.salary }}р</v-chip
+                    >от {{ item.salary_from }}
+                    {{ item.salary_currency }}</v-chip
                 >
             </v-chip-group>
         </v-card>
@@ -64,18 +65,12 @@ defineProps({
     padding: 0.5rem 1rem;
 }
 
-.card-md .chip:last-child {
+.card-md .chip-salary {
     margin-left: 0;
 }
 
-@media screen and (min-width: 960px) and (max-width: 1280px) {
-    .card-md .chip:last-child {
-        margin-left: 0;
-    }
-}
-
 @media screen and (min-width: 1280px) {
-    .card-md .chip:last-child {
+    .card-md .chip-salary {
         margin-left: auto;
     }
 }
