@@ -22,7 +22,6 @@ const items = [
         salary_currency: "USD",
         employment: "Полная занятость",
         employer: "Спортдата",
-        professional_roles: "Программист, разработчик",
     },
     {
         hh_id: "86329523",

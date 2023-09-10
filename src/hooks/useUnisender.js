@@ -40,7 +40,7 @@ export function useUnisender() {
   };
 
   const getList = async () => { 
-      await unisender.post('getLists', {
+      await unisender.get('getLists', {
         api_key: apiKey,
       }).then(res => {
         data.value = res.data

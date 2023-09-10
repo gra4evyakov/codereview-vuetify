@@ -1,6 +1,17 @@
 <script setup>
+import { onMounted } from "vue";
+
 import TheList from "@/components/TheList.vue";
 import TheTools from "@/components/TheTools.vue";
+
+import { useGetJobs } from "@/api/requests";
+
+const { data, isLoading, isError, execute } = useGetJobs();
+
+onMounted(async () => {
+    await execute();
+    console.log("Ответ от сервера: ", data.value);
+});
 </script>
 
 <template>

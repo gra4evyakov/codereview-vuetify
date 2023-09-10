@@ -1,4 +1,5 @@
 <script setup>
+import { useGetVacancy } from "@/api/requests";
 import { useRoute } from "vue-router";
 import { ref, onMounted, watch } from "vue";
 import { useFirebase } from "@/hooks/useFirebase";
@@ -8,6 +9,12 @@ import UiSnackbar from "@/components/ui/uiSnackbar.vue";
 
 const route = useRoute();
 const auth = useFirebase();
+const {
+    data,
+    isLoading,
+    isError,
+    execute
+  } = useGetVacancy();
 
 const vacancyId = ref("");
 const snackbar = ref(false);
@@ -48,12 +55,14 @@ watch(
     () => route.params.id,
     async (newVacancyId) => {
         vacancyId.value = newVacancyId;
-        // currentVacancy = ЗАПРОС
     }
 );
 
 onMounted(async () => {
     vacancyId.value = route.params.id;
+    await execute(vacancyId.value);
+    console.log('ID вакансии: ', vacancyId.value);
+    console.log('Ответ от сервера: ', data.value);
 });
 
 const copyText = () => {
