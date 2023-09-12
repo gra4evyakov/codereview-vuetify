@@ -6,9 +6,8 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/codereview-vuetify/',
+  // base: '/codereview-vuetify/',
   plugins: [
     vue({ 
       template: { transformAssetUrls }
@@ -33,6 +32,11 @@ export default defineConfig({
     ],
   },
   server: {
+    watch: {
+      usePolling: true, 
+    },
+    host: true,
+    strictPort: true,
     port: 3000,
   },
 })

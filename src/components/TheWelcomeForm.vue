@@ -73,7 +73,8 @@ onMounted(() => {
                     v-for="item in cards"
                     :key="item.id"
                 >
-                    <router-link :to="{ name: 'Jobs', query: { stack: item.type } }" v-show="expand">
+                    <!-- <router-link :to="{ name: 'Jobs', query: { stack: item.type } }" v-show="expand"> -->
+                    <router-link :to="{ name: 'Jobs' }" v-show="expand">
                         <ui-stack-card :item="item" />
                     </router-link>
                 </v-fade-transition>

@@ -1,5 +1,5 @@
 // Composables
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
@@ -29,16 +29,27 @@ const routes = [
       },
       {
         name: 'Vacancy',
-        path: 'vacancy/:id',
+        path: ':id',
         component: () => import('@/views/VacancyView.vue'),
         props: true
       }
     ]
   },
+  {
+    path: '/add',
+    component: () => import('@/layouts/DefaultLayout.vue'),
+    children: [
+      {
+        name: 'NewVacancy',
+        path: '',
+        component: () => import('@/views/AddVacancyView.vue'),
+      },
+    ]
+  },
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     return from.name !== 'Vacancy' ? { top: 0 } : savedPosition
